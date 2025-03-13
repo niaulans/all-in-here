@@ -3,7 +3,7 @@ from datetime import datetime, timedelta
 from airflow import DAG
 from airflow.operators.python import PythonOperator
 
-def greet(ti) :
+def greet(ti):
     first_name = ti.xcom_pull(task_ids='get_name', key='first_name')
     last_name = ti.xcom_pull(task_ids='get_name', key='last_name')
     age = ti.xcom_pull(task_ids='get_age', key='age')
