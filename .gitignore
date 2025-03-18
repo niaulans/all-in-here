@@ -1,2 +1,6 @@
 logs/
 __pycache__/
+data/*.txt
+
+!data/data.csv
+!data/orders.csv

@@ -1,0 +1,4 @@
+\COPY orders(order_id, date, product_name, quantity)
+FROM 'data/Orders.csv'
+DELIMITER ','
+CSV HEADER;
