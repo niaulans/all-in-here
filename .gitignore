@@ -1,6 +1,8 @@
 logs/
 __pycache__/
 data/*.txt
+.ipynb_checkpoints/
+
 
 !data/data.csv
 !data/orders.csv

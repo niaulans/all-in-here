@@ -1,0 +1,31 @@
+version: "3"
+services:
+  spark:
+    image: bitnami/spark:latest
+    container_name: spark-master
+    environment:
+      - SPARK_MODE=master
+    ports:
+      - "4040:4040"
+      - "8080:8080"
+    volumes:
+      - ./work:/opt/work
+
+  spark-worker:
+    image: bitnami/spark:latest
+    container_name: spark-worker
+    environment:
+      - SPARK_MODE=worker
+      - SPARK_MASTER_URL=spark://spark-master:7077
+    depends_on:
+      - spark
+
+  jupyterlab:
+    image: jupyter/pyspark-notebook
+    container_name: spark-jupyterlab
+    ports:
+      - "8888:8888"
+    volumes:
+      - ./work:/home/jovyan/work
+    environment:
+      - JUPYTER_ENABLE_LAB=yes
